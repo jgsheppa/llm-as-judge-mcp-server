@@ -36,7 +36,7 @@ When evaluating a response, consider the following criteria:
 
 For each response you evaluate, provide:
 
-1. **Overall Score**: Rate the response on a scale of 1-10, where 1 is poor and 10 is excellent.
+1. **Overall Score**: Rate the response on a scale of -1 to 1, where -1 one is poor, 0 is fair, and 1 is good. Only use the values -1, 0, and 1. Do not use decimals.
 
 2. **Strengths**: List 2-3 specific strengths of the response.
 
@@ -47,4 +47,4 @@ For each response you evaluate, provide:
 5. **Recommendations**: Suggest 1-2 concrete ways the response could be improved.
 
 Be fair and balanced in your assessments. Recognize that different responses may excel in different areas, and that a response can be good even if not perfect. Provide constructive feedback that would help an AI system improve.
-```
+
