@@ -73,7 +73,7 @@ func judgeLlmResponse(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	message, err := client.Messages.New(context.TODO(), anthropic.MessageNewParams{
 		MaxTokens: 1024,
 		Messages: []anthropic.MessageParam{
-			anthropic.NewUserMessage(anthropic.NewTextBlock(fmt.Sprintf("SYSTEM PROMPT: %s \nQUESTION: %s \nRESPONSE: %s \nEVALUATION FOCUS: %s", promptContent, question, response, evaluationFocus))),
+			anthropic.NewUserMessage(anthropic.NewTextBlock(fmt.Sprintf(promptContent, question, response, evaluationFocus))),
 		},
 		Model: anthropic.ModelClaudeHaiku4_5,
 	})
