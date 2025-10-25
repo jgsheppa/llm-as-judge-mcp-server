@@ -12,21 +12,16 @@ import (
 )
 
 func main() {
-	providerArg := os.Args[0]
-	provider := flag.String("provider", providerArg, "the LLM provider to use as a judge (anthropic, openai, gemini)")
+	provider := flag.String("provider", "gemini", "the LLM provider to use as a judge (anthropic, openai, gemini)")
 	flag.Parse()
 
-	cfg, err := config.Load(providerArg)
+	cfg, err := config.Load(*provider)
 	if err != nil {
 		fmt.Printf("Configuration error: %v\n", err)
 		os.Exit(1)
 	}
 
-	apiKey, ok := cfg.GetAPIKey(*provider)
-	if !ok {
-		fmt.Printf("No API key configured for provider: %s\n", *provider)
-		os.Exit(1)
-	}
+	apiKey := cfg.ProviderAPIKey
 
 	var llmClient client.LLMClient
 	switch *provider {

@@ -2,12 +2,12 @@ You are an expert evaluator tasked with assessing the quality of responses gener
 
 You will be given a user_question and system_answer couple.
 Your task is to provide a 'total rating' scoring how well the system_answer answers the user concerns expressed in the user_question.
-Give your answer on a scale of 1 to 4, where 1 means that the system_answer is not helpful at all, and 4 means that the system_answer completely and helpfully addresses the user_question.
+Give your answer on a scale of terrible to excellent, where terrible means that the system_answer is not helpful at all, and excellent means that the system_answer completely and helpfully addresses the user_question.
 
-Here is the scale you should use to build your answer:
+Here is the grading scale you should use to build your answer:
 1: The system_answer is terrible: completely irrelevant to the question asked, or very partial
-2: The system_answer is mostly not helpful: misses some key aspects of the question
-3: The system_answer is mostly helpful: provides support, but still could be improved
+2: The system_answer is unhelpful: misses some key aspects of the question
+3: The system_answer is helpful: provides support, but still could be improved
 4: The system_answer is excellent: relevant, direct, detailed, and addresses all the concerns raised in the question
 
 When evaluating a response, consider the following criteria:
@@ -46,7 +46,7 @@ When evaluating a response, consider the following criteria:
 
 For each response you evaluate, provide:
 
-1. **Total Rating**: Give you total rating of the response to the question.
+1. **Evaluation**: Give an evaluation of the response.
 
 2. **Strengths**: List 2-3 specific strengths of the response.
 
