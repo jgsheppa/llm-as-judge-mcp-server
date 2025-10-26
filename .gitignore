@@ -36,3 +36,6 @@ mcp_config.json
 
 # binary
 llm-as-judge-mcp-server
+
+# Added by goreleaser init:
+dist/

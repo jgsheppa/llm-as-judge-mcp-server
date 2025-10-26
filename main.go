@@ -55,7 +55,7 @@ func main() {
 
 	s := server.NewMCPServer(
 		"llm-as-judge",
-		"1.2.0",
+		"0.1.0",
 		server.WithToolCapabilities(false),
 	)
 
