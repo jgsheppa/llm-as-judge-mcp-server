@@ -34,8 +34,8 @@ go.work.sum
 # A local configuration file for MCP servers
 mcp_config.json
 
-# binary
-llm-as-judge-mcp-server
+# binary (in root directory only)
+/llm-as-judge-mcp-server
 
 # Added by goreleaser init:
 dist/

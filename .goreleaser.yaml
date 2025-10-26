@@ -22,6 +22,7 @@ builds:
       - linux
       - windows
       - darwin
+    main: ./cmd/llm-as-judge-mcp-server
 
 archives:
   - formats: [tar.gz]
@@ -46,8 +47,6 @@ changelog:
       - "^test:"
 
 release:
-  footer: >-
-
-    ---
-
-    Released by [GoReleaser](https://github.com/goreleaser/goreleaser).
+  draft: true
+  prerelease: auto
+  name_template: "LLM as Judge MCP Server {{.Version}}"
