@@ -13,9 +13,9 @@ type AnthropicClient struct {
 	*BaseClient[anthropic.Client]
 }
 
-func NewAnthropicClient(apiKey string) LLMClient {
+func NewAnthropicClient(apiKey, model string) LLMClient {
 	return &AnthropicClient{
-		BaseClient: NewBaseClient(apiKey, func(key string) (anthropic.Client, error) {
+		BaseClient: NewBaseClient(apiKey, model, func(key string) (anthropic.Client, error) {
 			return anthropic.NewClient(option.WithAPIKey(key)), nil
 		}),
 	}
@@ -29,7 +29,7 @@ func (a *AnthropicClient) Judge(ctx context.Context, question, response, evaluat
 		Messages: []anthropic.MessageParam{
 			anthropic.NewUserMessage(anthropic.NewTextBlock(fmt.Sprintf(prompts.JudgePrompt, question, response, evaluationFocus))),
 		},
-		Model: anthropic.ModelClaudeHaiku4_5,
+		Model: anthropic.Model(a.Model),
 	})
 	if err != nil {
 		return "", err

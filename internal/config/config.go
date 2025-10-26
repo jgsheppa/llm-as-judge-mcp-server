@@ -11,6 +11,9 @@ type Config struct {
 }
 
 func Load(provider string) (*Config, error) {
+	if provider == "ollama" {
+		return &Config{}, nil
+	}
 
 	envKey := strings.ToUpper(provider) + "_API_KEY"
 	apiKey, ok := os.LookupEnv(envKey)

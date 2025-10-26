@@ -30,3 +30,9 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# A local configuration file for MCP servers
+mcp_config.json
+
+# binary
+llm-as-judge-mcp-server

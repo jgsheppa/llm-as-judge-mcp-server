@@ -7,19 +7,16 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
-// JudgeHandler handles LLM response judgment requests
 type JudgeHandler struct {
 	client client.LLMClient
 }
 
-// NewJudgeHandler creates a new judge handler with the provided clients
 func NewJudgeHandler(client client.LLMClient) *JudgeHandler {
 	return &JudgeHandler{
 		client: client,
 	}
 }
 
-// NewTool creates the MCP tool definition for judge_response
 func NewTool() mcp.Tool {
 	return mcp.NewTool("judge_response",
 		mcp.WithDescription("Judge an LLM's response"),
@@ -37,7 +34,6 @@ func NewTool() mcp.Tool {
 	)
 }
 
-// Handle processes the judge_response tool request
 func (h *JudgeHandler) Handle(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	question, err := request.RequireString("question")
 	if err != nil {
@@ -53,7 +49,6 @@ func (h *JudgeHandler) Handle(ctx context.Context, request mcp.CallToolRequest) 
 
 	llmClient := h.client
 
-	// Call the client to judge the response
 	result, err := llmClient.Judge(ctx, question, response, evaluationFocus)
 	if err != nil {
 		return mcp.NewToolResultError(err.Error()), nil
