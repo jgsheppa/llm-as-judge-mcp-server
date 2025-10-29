@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/jgsheppa/llm-as-judge-mcp-server/internal/prompts"
 	"google.golang.org/genai"
 )
 
@@ -12,9 +11,9 @@ type GeminiClient struct {
 	*BaseClient[genai.Client]
 }
 
-func NewGeminiClient(apiKey, model string) LLMClient {
+func NewGeminiClient(apiKey, model, prompt string) LLMClient {
 	return &GeminiClient{
-		BaseClient: NewBaseClient(apiKey, model, func(key string) (genai.Client, error) {
+		BaseClient: NewBaseClient(apiKey, model, prompt, func(key string) (genai.Client, error) {
 			client, err := genai.NewClient(context.Background(), &genai.ClientConfig{
 				APIKey:  apiKey,
 				Backend: genai.BackendGeminiAPI,
@@ -35,7 +34,9 @@ func (g *GeminiClient) Judge(ctx context.Context, question, response, evaluation
 		return "", err
 	}
 
-	result, err := chat.SendMessage(ctx, genai.Part{Text: fmt.Sprintf(prompts.JudgePrompt, question, response, evaluationFocus)})
+	prompt := g.GetPrompt()
+
+	result, err := chat.SendMessage(ctx, genai.Part{Text: fmt.Sprintf(prompt, question, response, evaluationFocus)})
 	if err != nil {
 		return "", err
 	}

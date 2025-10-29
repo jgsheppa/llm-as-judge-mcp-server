@@ -7,8 +7,6 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-
-	"github.com/jgsheppa/llm-as-judge-mcp-server/internal/prompts"
 )
 
 type OllamaClient struct {
@@ -16,9 +14,9 @@ type OllamaClient struct {
 	baseURL string
 }
 
-func NewOllamaClient(apiKey, model string) LLMClient {
+func NewOllamaClient(apiKey, model, prompt string) LLMClient {
 	return &OllamaClient{
-		BaseClient: NewBaseClient(apiKey, model, func(key string) (*http.Client, error) {
+		BaseClient: NewBaseClient(apiKey, model, prompt, func(key string) (*http.Client, error) {
 			return &http.Client{}, nil
 		}),
 		baseURL: "http://localhost:11434",
@@ -43,9 +41,11 @@ func (o *OllamaClient) Judge(ctx context.Context, question, response, evaluation
 		return "", fmt.Errorf("ollama client initialization error: %w", err)
 	}
 
+	prompt := o.GetPrompt()
+
 	reqBody := OllamaGenerateRequest{
 		Model:  o.Model,
-		Prompt: fmt.Sprintf(prompts.JudgePrompt, question, response, evaluationFocus),
+		Prompt: fmt.Sprintf(prompt, question, response, evaluationFocus),
 		Stream: false,
 	}
 

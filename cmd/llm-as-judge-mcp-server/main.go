@@ -30,6 +30,7 @@ func main() {
 	provider := flag.String("provider", "gemini", "the LLM provider to use as a judge (anthropic, openai, gemini)")
 	defaultModel := GetDefaultProviderModel(*provider)
 	model := flag.String("model", defaultModel, "the model for the given provider")
+	promptPath := flag.String("prompt", "", "an optional path to your prompt")
 
 	flag.Parse()
 
@@ -44,11 +45,11 @@ func main() {
 	var llmClient client.LLMClient
 	switch *provider {
 	case "anthropic":
-		llmClient = client.NewAnthropicClient(apiKey, *model)
+		llmClient = client.NewAnthropicClient(apiKey, *model, *promptPath)
 	case "gemini":
-		llmClient = client.NewGeminiClient(apiKey, *model)
+		llmClient = client.NewGeminiClient(apiKey, *model, *promptPath)
 	case "ollama":
-		llmClient = client.NewOllamaClient(apiKey, *model)
+		llmClient = client.NewOllamaClient(apiKey, *model, *promptPath)
 	}
 
 	judgeHandler := handler.NewJudgeHandler(llmClient)

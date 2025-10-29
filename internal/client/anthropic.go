@@ -6,16 +6,15 @@ import (
 
 	"github.com/anthropics/anthropic-sdk-go"
 	"github.com/anthropics/anthropic-sdk-go/option"
-	"github.com/jgsheppa/llm-as-judge-mcp-server/internal/prompts"
 )
 
 type AnthropicClient struct {
 	*BaseClient[anthropic.Client]
 }
 
-func NewAnthropicClient(apiKey, model string) LLMClient {
+func NewAnthropicClient(apiKey, model, prompt string) LLMClient {
 	return &AnthropicClient{
-		BaseClient: NewBaseClient(apiKey, model, func(key string) (anthropic.Client, error) {
+		BaseClient: NewBaseClient(apiKey, model, prompt, func(key string) (anthropic.Client, error) {
 			return anthropic.NewClient(option.WithAPIKey(key)), nil
 		}),
 	}
@@ -23,11 +22,12 @@ func NewAnthropicClient(apiKey, model string) LLMClient {
 
 func (a *AnthropicClient) Judge(ctx context.Context, question, response, evaluationFocus string) (string, error) {
 	client := a.GetClient()
+	prompt := a.GetPrompt()
 
 	message, err := client.Messages.New(ctx, anthropic.MessageNewParams{
 		MaxTokens: 1024,
 		Messages: []anthropic.MessageParam{
-			anthropic.NewUserMessage(anthropic.NewTextBlock(fmt.Sprintf(prompts.JudgePrompt, question, response, evaluationFocus))),
+			anthropic.NewUserMessage(anthropic.NewTextBlock(fmt.Sprintf(prompt, question, response, evaluationFocus))),
 		},
 		Model: anthropic.Model(a.Model),
 	})
