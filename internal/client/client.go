@@ -31,6 +31,34 @@ func NewBaseClient[T any](apiKey string, model string, promptPath string, client
 	}
 }
 
+func GetDefaultProviderModel(provider string) string {
+	var model string
+	switch provider {
+	case "anthropic":
+		model = "claude-haiku-4-5"
+	case "gemini":
+		model = "gemini-2.5-flash"
+	case "ollama":
+		model = "gemma3:4b"
+	default:
+		model = ""
+	}
+	return model
+}
+
+func GetClientProvider(provider, apiKey, model, promptPath string) LLMClient {
+	var llmClient LLMClient
+	switch provider {
+	case "anthropic":
+		llmClient = NewAnthropicClient(apiKey, model, promptPath)
+	case "gemini":
+		llmClient = NewGeminiClient(apiKey, model, promptPath)
+	case "ollama":
+		llmClient = NewOllamaClient(apiKey, model, promptPath)
+	}
+	return llmClient
+}
+
 func (b *BaseClient[T]) GetClient() T {
 	return b.client
 }
