@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	provider := flag.String("provider", "gemini", "the LLM provider to use as a judge (anthropic, openai, gemini)")
+	provider := flag.String("provider", "gemini", "the LLM provider to use as a judge (anthropic, openai, gemini, ollama)")
 	defaultModel := client.GetDefaultProviderModel(*provider)
 	model := flag.String("model", defaultModel, "the model for the given provider")
 	promptPath := flag.String("prompt", "", "an optional path to your prompt")
@@ -21,7 +21,8 @@ func main() {
 
 	cfg, err := config.Load(*provider)
 	if err != nil {
-		fmt.Printf("Configuration error: %v\n", err)
+		fmt.Println("Configuration error:")
+		fmt.Println(err)
 		os.Exit(1)
 	}
 
@@ -33,14 +34,15 @@ func main() {
 
 	s := server.NewMCPServer(
 		"llm-as-judge",
-		"0.1.0",
+		"0.3.0",
 		server.WithToolCapabilities(false),
 	)
 
 	s.AddTool(handler.NewTool(), judgeHandler.Handle)
 
 	if err := server.ServeStdio(s); err != nil {
-		fmt.Printf("Server error: %v\n", err)
+		fmt.Println("Server error:")
+		fmt.Println(err)
 		os.Exit(1)
 	}
 }

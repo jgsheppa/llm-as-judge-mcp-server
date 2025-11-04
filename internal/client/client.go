@@ -40,6 +40,8 @@ func GetDefaultProviderModel(provider string) string {
 		model = "gemini-2.5-flash"
 	case "ollama":
 		model = "gemma3:4b"
+	case "openai":
+		model = "gpt-5-mini"
 	default:
 		model = ""
 	}
@@ -55,6 +57,8 @@ func GetClientProvider(provider, apiKey, model, promptPath string) LLMClient {
 		llmClient = NewGeminiClient(apiKey, model, promptPath)
 	case "ollama":
 		llmClient = NewOllamaClient(apiKey, model, promptPath)
+	case "openai":
+		llmClient = NewOpenAIClient(apiKey, model, promptPath)
 	}
 	return llmClient
 }

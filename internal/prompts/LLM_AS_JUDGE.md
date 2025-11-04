@@ -51,7 +51,7 @@ When evaluating a response, consider the following criteria:
 
 For each response you evaluate, provide:
 
-1. **Evaluation**: Give an evaluation of the response.
+1. **Evaluation**: Give an evaluation of the response. An example would be: "This response received 3 out of a total of 4 possible points."
 
 2. **Strengths**: List 2-3 specific strengths of the response.
 

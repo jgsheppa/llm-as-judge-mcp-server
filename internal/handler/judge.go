@@ -45,7 +45,7 @@ func (h *JudgeHandler) Handle(ctx context.Context, request mcp.CallToolRequest) 
 		return mcp.NewToolResultError(err.Error()), nil
 	}
 
-	evaluationFocus, _ := request.RequireString("evaluation_focus")
+	evaluationFocus := request.GetString("evaluation_focus", "")
 
 	llmClient := h.client
 
