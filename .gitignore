@@ -36,6 +36,12 @@ mcp_config.json
 
 # binary (in root directory only)
 /llm-as-judge-mcp-server
+llm-as-judge-mcp-server*
 
 # Added by goreleaser init:
 dist/
+
+node_modules/
+bin/
+
+.npmignore

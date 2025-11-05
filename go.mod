@@ -5,6 +5,7 @@ go 1.24.5
 require (
 	github.com/anthropics/anthropic-sdk-go v1.14.0
 	github.com/mark3labs/mcp-go v0.42.0
+	github.com/openai/openai-go/v3 v3.7.0
 	google.golang.org/genai v1.32.0
 )
 
@@ -22,7 +23,6 @@ require (
 	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/invopop/jsonschema v0.13.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
-	github.com/openai/openai-go/v3 v3.7.0 // indirect
 	github.com/spf13/cast v1.7.1 // indirect
 	github.com/tidwall/gjson v1.18.0 // indirect
 	github.com/tidwall/match v1.2.0 // indirect
