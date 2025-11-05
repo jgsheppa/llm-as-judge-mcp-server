@@ -10,6 +10,7 @@
   "bin": {
     "llm-as-judge-mcp-server": "bin/llm-as-judge-mcp-server"
   },
+  "files": ["bin", "README.md", "LICENSE"],
   "keywords": [
     "modelcontextprotocol",
     "llm",
