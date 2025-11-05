@@ -4,7 +4,13 @@ The LLM as Judge MCP Server enables users of LLMs to get a second opinion for an
 
 ## Installation
 
-You can download a binary which matches your machine's architecture to start using `llm-as-judge-mcp-server`.
+You can run this MCP server using `node` with the following command. This can also be used in MCP configuration files, which can be seen in the setup section below.
+
+```
+npx -y @jgsheppa/llm-as-judge-mcp-server
+```
+
+You can also download a binary which matches your machine's architecture to start using `llm-as-judge-mcp-server`.
 
 ## Setup
 
@@ -14,15 +20,14 @@ To set up the `llm-as-judge-mcp-server`, you can define the MCP server in a JSON
 {
   "mcpServers": {
     "llm-as-judge": {
-      "command": "llm-as-judge-mcp-server",
+      "command": "npx",
       "args": [
-        // User-defined provider
+        "-y",
+        "@jgsheppa/llm-as-judge-mcp-server",
         "-provider", 
         "gemini", 
-        // User-defined model
         "-model", 
         "gemini-2.5-flash", 
-        // Custom prompt with filepath for Mac users
         "-prompt",
         "/Users/firstlast/Desktop/PROMPT.md"
         ],
