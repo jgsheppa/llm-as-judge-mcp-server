@@ -50,3 +50,53 @@ release:
   draft: true
   prerelease: auto
   name_template: "LLM as Judge MCP Server {{.Version}}"
+
+# .goreleaser.yaml
+npms:
+  - # ID of the resulting image.
+    id: "@jgsheppa/llm-as-judge-mcp-server"
+    name: "@jgsheppa/llm-as-judge-mcp-server"
+    description: An MCP server that uses LLMs to judge answers.
+
+    homepage: https://github.com/jgsheppa/llm-as-judge-mcp-server
+
+    # Keywords for the package.
+    keywords:
+      - modelcontextprotocol
+      - mcp
+      - llm
+      - judge
+      - golang
+    license: MIT
+
+    # Author of the package.
+    #
+    # Templates: allowed.
+    # Default: inferred from global metadata.
+    author: James Sheppard jgsheppard92@gmail.com
+    repository: https://github.com/jgsheppa/llm-as-judge-mcp-server
+    bugs: https://github.com/jgsheppa/llm-as-judge-mcp-server/issues
+
+    # Additional files/globs you want to add to the package.
+    #
+    # Default: ["README*", "LICENSE*"]
+    # Templates: allowed.
+    extra_files:
+      - glob: ["README*", "LICENSE*"]
+
+    # Access level: public or restricted.
+    access: public
+
+    # Tag to publish the package with.
+    #
+    # Default: 'latest'.
+    # Templates: allowed.
+    # Since: v2.13 (unreleased).
+    tag: {{ .Tag }}
+
+    # URL which is determined by the given Token (github, gitlab or gitea).
+    #
+    # Default depends on the client.
+    # Templates: allowed.
+    # Since: v2.10.
+    url_template: "https://github.com/jgsheppa/llm-as-judge-mcp-server/releases/download/{{ .Tag }}/{{ .ArtifactName }}"

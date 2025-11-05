@@ -43,9 +43,10 @@ To define your provider and model, you can pass them as arguments to the MCP ser
 
 Currently three providers are available for this MCP server:
 
-- Gemini
 - Anthropic
+- Gemini
 - Ollama
+- OpenAI
 
 More providers can and will be added in the future.
 
