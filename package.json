@@ -11,7 +11,7 @@
     "llm-as-judge-mcp-server": "bin/llm-as-judge-mcp-server stdio"
   },
   "files": [
-    "bin",
+    "bin/llm-as-judge-mcp-server",
     "README.md",
     "LICENSE"
   ],

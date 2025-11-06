@@ -56,7 +56,7 @@ var stdioCommand = &cobra.Command{
 
 		s := server.NewMCPServer(
 			"llm-as-judge",
-			"0.3.0",
+			"0.7.2",
 			server.WithToolCapabilities(false),
 		)
 
