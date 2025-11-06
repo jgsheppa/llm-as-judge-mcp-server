@@ -31,8 +31,11 @@ func NewBaseClient[T any](apiKey string, model string, promptPath string, client
 	}
 }
 
-func GetDefaultProviderModel(provider string) string {
-	var model string
+func GetDefaultProviderModel(provider, model string) string {
+	if model != "" {
+		return model
+	}
+
 	switch provider {
 	case "anthropic":
 		model = "claude-haiku-4-5"
@@ -48,17 +51,27 @@ func GetDefaultProviderModel(provider string) string {
 	return model
 }
 
-func GetClientProvider(provider, apiKey, model, promptPath string) LLMClient {
+func GetClientProvider(apiKey string, args []string) LLMClient {
+	provider := args[0]
+	var model, promptPath string
+	if len(args) > 1 {
+		model = args[1]
+	}
+	if len(args) > 2 {
+		promptPath = args[2]
+	}
+	providerModel := GetDefaultProviderModel(provider, model)
+
 	var llmClient LLMClient
 	switch provider {
 	case "anthropic":
-		llmClient = NewAnthropicClient(apiKey, model, promptPath)
+		llmClient = NewAnthropicClient(apiKey, providerModel, promptPath)
 	case "gemini":
-		llmClient = NewGeminiClient(apiKey, model, promptPath)
+		llmClient = NewGeminiClient(apiKey, providerModel, promptPath)
 	case "ollama":
-		llmClient = NewOllamaClient(apiKey, model, promptPath)
+		llmClient = NewOllamaClient(apiKey, providerModel, promptPath)
 	case "openai":
-		llmClient = NewOpenAIClient(apiKey, model, promptPath)
+		llmClient = NewOpenAIClient(apiKey, providerModel, promptPath)
 	}
 	return llmClient
 }
