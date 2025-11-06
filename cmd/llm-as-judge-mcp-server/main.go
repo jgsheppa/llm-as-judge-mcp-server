@@ -73,9 +73,9 @@ var stdioCommand = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(stdioCommand)
 
-	stdioCommand.Flags().String("provider", "", "The LLM provider to use as a judge (anthropic, openai, gemini, ollama)")
+	stdioCommand.Flags().StringP("provider", "p", "", "The LLM provider to use as a judge (anthropic, openai, gemini, ollama)")
 	stdioCommand.MarkFlagRequired("provider")
-	stdioCommand.Flags().String("model", "", "The model to use which is offered by the given provider")
+	stdioCommand.Flags().StringP("model", "m", "", "The model to use which is offered by the given provider")
 	stdioCommand.Flags().String("prompt-path", "", "An optional path to your prompt")
 }
 

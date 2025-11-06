@@ -24,11 +24,11 @@ To set up the `llm-as-judge-mcp-server`, you can define the MCP server in a JSON
       "args": [
         "-y",
         "@jgsheppa/llm-as-judge-mcp-server",
-        "-provider", 
+        "-p", 
         "gemini", 
-        "-model", 
+        "-m", 
         "gemini-2.5-flash", 
-        "-prompt",
+        "--prompt-path",
         "/Users/firstlast/Desktop/PROMPT.md"
         ],
       "env": {
