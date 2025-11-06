@@ -1,6 +1,6 @@
 {
   "name": "@jgsheppa/llm-as-judge-mcp-server",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "An MCP server that uses large language models (LLMs) as judges to evaluate the responses of other LLMs.",
   "repository": "git://github.com/jgsheppa/llm-as-judge-mcp-server.git",
   "homepage": "https://github.com/jgsheppa/llm-as-judge-mcp-server",
