@@ -24,6 +24,7 @@ To set up the `llm-as-judge-mcp-server`, you can define the MCP server in a JSON
       "args": [
         "-y",
         "@jgsheppa/llm-as-judge-mcp-server",
+        "stdio",
         "-p", 
         "gemini", 
         "-m", 
