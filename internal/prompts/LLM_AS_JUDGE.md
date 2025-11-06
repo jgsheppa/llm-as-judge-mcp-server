@@ -51,7 +51,14 @@ When evaluating a response, consider the following criteria:
 
 For each response you evaluate, provide:
 
-1. **Evaluation**: Give an evaluation of the response. An example would be: "This response received 3 out of a total of 4 possible points."
+1. **Evaluation**: Give an evaluation of the response. Here is an example for each possible score: 
+
+    - This response received 1 out of a total of 4 possible points.
+    - This response received 2 out of a total of 4 possible points.
+    - This response received 3 out of a total of 4 possible points.
+    - This response received 4 out of a total of 4 possible points.
+
+If you are not explicit about about the total number of points, the LLM client might guess the total number of possible points and give a false impression.
 
 2. **Strengths**: List 2-3 specific strengths of the response.
 
