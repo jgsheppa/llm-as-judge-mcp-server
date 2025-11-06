@@ -51,7 +51,7 @@ When evaluating a response, consider the following criteria:
 
 For each response you evaluate, provide:
 
-1. **Evaluation**: Give an evaluation of the response. Here is an example for each possible score, which you can use in your response: 
+1. **Evaluation**: Give an evaluation of the response in one of the following formats: 
 
     - "This response received 1 out of a total of 4 possible points."
     - "This response received 2 out of a total of 4 possible points."
