@@ -8,13 +8,8 @@
     "url": "https://github.com/jgsheppa/llm-as-judge-mcp-server/issues"
   },
   "bin": {
-    "llm-as-judge-mcp-server": "./bin/llm-as-judge-mcp-server"
+    "llm-as-judge-mcp-server": "bin/llm-as-judge-mcp-server"
   },
-  "files": [
-    "bin",
-    "README.md",
-    "LICENSE"
-  ],
   "keywords": [
     "modelcontextprotocol",
     "llm",
