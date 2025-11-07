@@ -27,6 +27,29 @@ To set up the `llm-as-judge-mcp-server`, you can define the MCP server in a JSON
         "stdio",
         "-p", 
         "gemini", 
+        ],
+      "env": {
+        "GEMINI_API_KEY": "your-api-key",
+      }
+    },
+  }
+}
+
+```
+
+To customize your model and prompt, you configuration would look like this:
+
+```json
+{
+  "mcpServers": {
+    "llm-as-judge": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@jgsheppa/llm-as-judge-mcp-server",
+        "stdio",
+        "-p", 
+        "gemini", 
         "-m", 
         "gemini-2.5-flash", 
         "--prompt-path",
@@ -41,7 +64,7 @@ To set up the `llm-as-judge-mcp-server`, you can define the MCP server in a JSON
 
 ```
 
-To define your provider and model, you can pass them as arguments to the MCP server. And while there is a default prompt for the LLM as judge, you can also pass your own custom prompt by providing the full filepath to the `-prompt` argument.
+To define your provider and model, you can pass them as arguments to the MCP server. And while there is a default prompt for the LLM as judge, you can also pass your own custom prompt by providing the full filepath to the `--prompt-path` argument.
 
 ## Features
 
@@ -59,6 +82,17 @@ More providers can and will be added in the future.
 ### Models
 
 Any models offered by the previously mentioned providers can be used as LLM judges. It is up to you to decide which model works best for your use-case, but a bigger, frontier model is not necessarily the best option to evaluate the response of another frontier model. Smaller, less expensive models can be great options as well.
+
+#### Default Models
+
+To try and improve the experience of using this MCP server, there are default models for each provider. The models were chosen because they are the most cost-efficient. These might change in the future, but since they are customizable, these seem like fine choices for now.
+
+| Provider  | Default Model      |
+|-----------|-------------------|
+| Anthropic | claude-haiku-4-5  |
+| Gemini    | gemini-2.5-flash  |
+| Ollama    | gemma3:4b         |
+| OpenAI    | gpt-5-mini        |
 
 ### Prompts
 
