@@ -1,3 +1,5 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/jgsheppa/llm-as-judge-mcp-server/cmd/llm-as-judge-mcp-server.svg)](https://pkg.go.dev/github.com/jgsheppa/llm-as-judge-mcp-server/cmd/llm-as-judge-mcp-server)
+
 # llm-as-judge-mcp-server
 
 The LLM as Judge MCP Server enables users of LLMs to get a second opinion for an LLM's response. The MCP tool sends the user's question, the LLM's response, and an optional focus for the evaluation to a second LLM for evaluation. This second opinion can be used to then improve an LLM's response and give users another perspective regarding the original LLM's response.
